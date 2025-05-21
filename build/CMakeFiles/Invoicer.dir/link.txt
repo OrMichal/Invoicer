@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/Invoicer.dir/link.d "CMakeFiles/Invoicer.dir/core/invoicer-form/invoice_form.c.o" "CMakeFiles/Invoicer.dir/interfaces/invoice-volume/invoice_volume.c.o" CMakeFiles/Invoicer.dir/main.c.o CMakeFiles/Invoicer.dir/nuklear_impl.c.o -o Invoicer  -lglfw -lGLEW -lGL -lX11 -lGLU /usr/lib/x86_64-linux-gnu/libGL.so -lm

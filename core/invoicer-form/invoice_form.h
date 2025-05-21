@@ -1,0 +1,25 @@
+#ifndef INVOICE_FORM_H
+#define INVOICE_FORM_H
+
+#include "../../nuklear.h"
+#include "../.././interfaces/invoice-volume/invoice_volume.h"
+
+#define MAX_FIELDS 10
+
+typedef struct InvoiceForm{
+    char* Title;
+    InvoiceVolume* Fields[MAX_FIELDS];
+    int field_count;
+    void (*DrawForm)(struct nk_context* ctx, struct InvoiceForm* form);
+    void (*AddVolume)(struct InvoiceForm* form, InvoiceVolume* volume);
+    void (*OnInvoiceSelected)(InvoiceForm* self);
+    void (*Destroy)(struct InvoiceForm* form);
+} InvoiceForm;
+
+InvoiceForm* invoice_form_init();
+void draw_invoice_form(struct nk_context* ctx, InvoiceForm* form);
+void invoice_form_add_field(InvoiceForm* form, InvoiceVolume* volume);
+void destroy_invoice(InvoiceForm* form);
+void on_invoiceselected_impl(InvoiceForm* self);
+
+#endif // INVOICE_FORM_H

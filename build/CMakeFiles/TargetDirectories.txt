@@ -1,0 +1,3 @@
+/home/orsah/Desktop/Invoicer/build/CMakeFiles/Invoicer.dir
+/home/orsah/Desktop/Invoicer/build/CMakeFiles/edit_cache.dir
+/home/orsah/Desktop/Invoicer/build/CMakeFiles/rebuild_cache.dir
