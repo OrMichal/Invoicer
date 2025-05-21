@@ -12,7 +12,7 @@ typedef struct InvoiceForm{
     int field_count;
     void (*DrawForm)(struct nk_context* ctx, struct InvoiceForm* form);
     void (*AddVolume)(struct InvoiceForm* form, InvoiceVolume* volume);
-    void (*OnInvoiceSelected)(InvoiceForm* self);
+    void (*OnInvoiceSelected)(struct InvoiceForm* self);
     void (*Destroy)(struct InvoiceForm* form);
 } InvoiceForm;
 

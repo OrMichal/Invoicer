@@ -4,9 +4,9 @@
 typedef struct Event {
     void** _actions;
     int _count;
-    void (*Invoke)(Event* event);
-    void (*Append)(Event* event, void* action);
-    void (*Destroy)(Event* self);
+    void (*Invoke)(struct Event* event);
+    void (*Append)(struct Event* event, void* action);
+    void (*Destroy)(struct Event* self);
 } Event;
 
 void Invoke(Event* event);
