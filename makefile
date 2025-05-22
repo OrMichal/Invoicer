@@ -4,7 +4,15 @@ BIN = Invoicer
 # Flags
 CFLAGS += -g -std=c99 -Wall -Wextra -pedantic
 
-SRCS = nuklear_impl.c main.c core/invoicer-form/invoice_form.c UI/invoice-volume/invoice_volume.c core/Event/event.c
+SRCS = nuklear_impl.c \
+	main.c \
+	core/sys/String/String.c \
+	core/Event/event.c \
+	UI/invoicer-form/invoice_form.c \
+	UI/invoice-volume/invoice_volume.c \
+	services/FileReader/FileReader.c \
+	services/data-service/data-service.c \
+	services/Invoice-service/invoice-service.c 
 
 OBJS = $(SRCS:.c=.o)
 

@@ -1,15 +1,17 @@
 #ifndef DATA_SERVICE_H
 #define DATA_SERVICE_H
-#include "../../UI/invoice-volume/invoice_volume.h"
+
+#include "../../UI/invoicer-form/invoice_form.h"
+#include "../FileReader/FileReader.h"
+#include "../../core/sys/String/String.h"
 
 typedef struct DataService{
-    char* InvoiceDataPath;
-    InvoiceVolume** _data;
-    InvoiceVolume** (*GetData)(DataService* self);
-    char** (*GetHeaders)(DataService* self);
+    StringFc* StringFc;
+    FileService* _fileservice;
+    InvoiceForm** (*GetInvoiceForms)(struct DataService* self);
 } DataService;
 
-DataService* init_dataservice(char* InvoiceDataPath);
-InvoiceVolume** GetData(DataService* self);
-char** (*GetHeaders)(DataService* self);
-#endif /* DATA_SERVICE_H */
+DataService* init_dataservice();
+InvoiceForm** GetInvoiceForms(DataService* self);
+
+#endif

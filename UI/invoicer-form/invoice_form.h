@@ -2,9 +2,9 @@
 #define INVOICE_FORM_H
 
 #include "../../nuklear.h"
-#include "../.././interfaces/invoice-volume/invoice_volume.h"
+#include "../../UI/invoice-volume/invoice_volume.h"
 
-#define MAX_FIELDS 10
+#define MAX_FIELDS 40
 
 typedef struct InvoiceForm{
     char* Title;
@@ -22,4 +22,4 @@ void invoice_form_add_field(InvoiceForm* form, InvoiceVolume* volume);
 void destroy_invoice(InvoiceForm* form);
 void on_invoiceselected_impl(InvoiceForm* self);
 
-#endif // INVOICE_FORM_H
+#endif

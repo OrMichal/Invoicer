@@ -30,7 +30,7 @@ void invoice_form_add_field(InvoiceForm* form, InvoiceVolume* volume) {
 void draw_invoice_form(struct nk_context* ctx, InvoiceForm* form) {
     if (!ctx || !form) return;
 
-    if (nk_begin(ctx, form->Title, nk_rect(0, 0, 400, 300), NK_WINDOW_BORDER | NK_WINDOW_TITLE)) {
+    if (nk_begin(ctx, form->Title, nk_rect(0, 0, 400, 600), NK_WINDOW_BORDER | NK_WINDOW_TITLE)) {
         for (int i = 0; i < form->field_count; i++) {
             form->Fields[i]->GetVolume(ctx, form->Fields[i]);
         }

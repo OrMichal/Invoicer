@@ -6,10 +6,11 @@
 #include <GLFW/glfw3.h>
 
 #include "nuklear_impl.h"
-#include "./core/invoicer-form/invoice_form.h"
+#include "./services/Invoice-service/invoice-service.h"
 
 int main(void) {
-    InvoiceForm* form = invoice_form_init();
+    InvoiceService* _invoiceService = init_invoice_service();
+    InvoiceForm* form = _invoiceService->GetInvoiceForm(_invoiceService, 0);
 
     if (!glfwInit()) {
         fprintf(stderr, "Failed to init GLFW\n");

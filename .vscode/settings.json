@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "invoice_form.h": "c"
+        "invoice_form.h": "c",
+        "string.h": "c",
+        "stdio.h": "c"
     }
 }
