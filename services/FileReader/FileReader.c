@@ -16,5 +16,10 @@ char** init_read_file(char* file_name) {
 
 void init_write_to_file(char* file_name, char** _data) {
     FILE* fptr = fopen(file_name, "w");
-    
+    int i = 0;
+    while(_data[i] != NULL) {
+        fprintf(fptr,_data[i]);
+        i++;
+    }
+    fclose(fptr);
 }
