@@ -6,17 +6,11 @@
 
 InvoiceForm* invoice_form_init() {
     InvoiceForm* form = malloc(sizeof(InvoiceForm));
-    if (!form) return NULL;
-
     form->Title = "Faktura - Daňový doklad";
     form->field_count = 0;
     form->AddVolume = invoice_form_add_field;
-    form->DrawForm = draw_invoice_form;
     form->Destroy = destroy_invoice;
     form->OnInvoiceSelected = on_invoiceselected_impl;
-
-    form->AddVolume(form, new_invoice_volume("IČ", ""));
-    form->AddVolume(form, new_invoice_volume("DIČ", ""));
 
     return form;
 }

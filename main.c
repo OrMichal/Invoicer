@@ -6,11 +6,22 @@
 #include <GLFW/glfw3.h>
 
 #include "nuklear_impl.h"
-#include "./services/Invoice-service/invoice-service.h"
+#include "core/Application/application.h"
+#include "namespace.h"
+
+static struct nk_context* g_ctx;
+static InvoiceForm* g_form;
+static InvoiceSelector* g_selector;
+
+void formDraw() {
+    draw_invoice_form(g_ctx, g_form);
+}
+
+void selectorDraw() {
+    draw_selector(g_selector, g_ctx);
+}
 
 int main(void) {
-    InvoiceService* _invoiceService = init_invoice_service();
-    InvoiceForm* form = _invoiceService->GetInvoiceForm(_invoiceService, 0);
 
     if (!glfwInit()) {
         fprintf(stderr, "Failed to init GLFW\n");
@@ -49,12 +60,31 @@ int main(void) {
 
     nk_glfw3_font_stash_end(&glfw);
     nk_style_set_font(&glfw.ctx, &my_font->handle);
+// -------------------------------------------------------------------------------------------------
+    Application* app = init_Application();
+
+    InvoiceForm* form = app->_invoiceService->GetInvoiceForm(app->_invoiceService ,0);
+    g_ctx = &glfw.ctx;
+    g_form = form;
+    free(form);
+
+    app->_emitter->FindSignal(app->_emitter ,"run")->_event->Append(
+        app->_emitter->FindSignal(app->_emitter, "run")->_event,
+        formDraw
+    );
+
+    InvoiceSelector* selector = init_InvoiceSelector(app);
+    g_selector = selector;
+    free(selector);
+
+    app->_emitter->FindSignal(app->_emitter ,"run")->_event->Append(app->_emitter->FindSignal(app->_emitter, "run")->_event, formDraw);
+    app->_emitter->FindSignal(app->_emitter ,"run")->_event->Append(app->_emitter->FindSignal(app->_emitter, "run")->_event, selectorDraw);
 
     while (!glfwWindowShouldClose(win)) {
         glfwPollEvents();
         nk_glfw3_new_frame(&glfw);
 
-        form->DrawForm(&glfw.ctx, form);
+        app->Run(app);
 
         int width, height;
         glfwGetFramebufferSize(win, &width, &height);

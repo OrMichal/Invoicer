@@ -10,7 +10,7 @@ typedef struct Event {
 } Event;
 
 void Invoke(Event* event);
-void Append(Event* event,void* action);
+void Append(Event* event, void* action);
 Event* init_Event();
 void Destroy(Event* self);
 #endif /* EVENT_H */

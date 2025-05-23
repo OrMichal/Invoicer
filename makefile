@@ -8,11 +8,15 @@ SRCS = nuklear_impl.c \
 	main.c \
 	core/sys/String/String.c \
 	core/Event/event.c \
+	core/Event-emitter/event-emitter.c \
+	core/Application/application.c \
 	UI/invoicer-form/invoice_form.c \
 	UI/invoice-volume/invoice_volume.c \
+	UI/invoice-selector/invoice-selector.c \
 	services/FileReader/FileReader.c \
 	services/data-service/data-service.c \
-	services/Invoice-service/invoice-service.c 
+	services/Invoice-service/invoice-service.c \
+	interfaces/signal/signal.c
 
 OBJS = $(SRCS:.c=.o)
 

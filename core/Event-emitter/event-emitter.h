@@ -3,10 +3,13 @@
 #include "../../interfaces/signal/signal.h"
 typedef struct EventEmitter {
     Signal** _signals;
-    void (*SendSignal)(struct EventEmitter* self, const char* signalName);
+    int _signalCount;
+    void (*SendSignal)(struct EventEmitter* self, char* signalName);
     void (*AddSignal)(struct EventEmitter* self, Signal* signal);
+    Signal* (*FindSignal)(struct EventEmitter* self, char* signalName);
 } EventEmitter;
 
 EventEmitter* init_EventEmitter();
-void SendSignal(EventEmitter* self, const char* signalName);
+void SendSignal(EventEmitter* self, char* signalName);
+Signal* FindSignal(EventEmitter* self, char* signalName);
 #endif
